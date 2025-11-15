@@ -47,5 +47,8 @@ int16 ads1115_read_reg(int8 reg);
 
 void  ads1115_init(void);
 int16 ads1115_read_single_ended(int8 channel);
+float ads1115_raw_to_volts(int16 raw);
+float ads1115_read_voltage(int8 channel);
+
 
 #endif

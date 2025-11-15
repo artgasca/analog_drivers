@@ -97,3 +97,20 @@ int16 ads1115_read_single_ended(int8 channel)
    // Leer resultado
    return ads1115_read_reg(ADS1115_REG_CONVERSION);
 }
+// Conversión genérica usando el FSR del PGA que estamos usando
+// Aquí asumimos PGA = ±4.096V, si cambias, ajustas FSR_VOLTS
+#define ADS1115_FSR_VOLTS   4.096f   // Full-Scale Range del PGA actual
+
+float ads1115_raw_to_volts(int16 raw)
+{
+   // raw es signed 16-bit, rango -32768..32767
+   float v = (float)raw;
+   v *= (ADS1115_FSR_VOLTS / 32768.0f);
+   return v; // Volts
+}
+
+float ads1115_read_voltage(int8 channel)
+{
+   int16 raw = ads1115_read_single_ended(channel);
+   return ads1115_raw_to_volts(raw);
+}
