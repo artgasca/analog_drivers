@@ -4,6 +4,19 @@
 // Asumimos que en tu main ya existe:
 // #use i2c(Master, SDA=..., SCL=..., Fast=400000, stream=ADS_I2C)
 
+int1 ads1115_ping(void)
+{
+   int8 ack;
+
+   i2c_start(ADS_I2C);
+   ack = i2c_write(ADS1115_ADDR_WRITE);   // 0x90 con ADDR=GND
+   i2c_stop(ADS_I2C);
+
+   // En CCS: 0 = ACK, 1 = NACK
+   return (ack == 0);
+}
+
+
 void ads1115_write_reg(int8 reg, int16 value)
 {
    int8 msb = make8(value, 1);

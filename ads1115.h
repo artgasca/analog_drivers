@@ -41,6 +41,7 @@
 #define ADS1115_OS_MASK          0x8000
 
 // Prototipos
+int1 ads1115_ping(void);
 void  ads1115_write_reg(int8 reg, int16 value);
 int16 ads1115_read_reg(int8 reg);
 
