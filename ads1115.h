@@ -2,9 +2,9 @@
 #ifndef ADS1115_H
 #define ADS1115_H
 
-// DirecciÃ³n 7 bits base (A0,A1,A2 = GND => 0x48)
+// Dirección 7 bits base (A0,A1,A2 = GND => 0x48)
 #ifndef ADS1115_I2C_ADDR_7BIT
- #define ADS1115_I2C_ADDR_7BIT   0x48
+ #define ADS1115_I2C_ADDR_7BIT   0x49   
 #endif
 
 // Direcciones 8 bits para CCS (write/read)
