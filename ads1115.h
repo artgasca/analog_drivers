@@ -24,10 +24,16 @@
 #define ADS1115_MUX_A2_GND   0x6000  // AIN2 vs GND
 #define ADS1115_MUX_A3_GND   0x7000  // AIN3 vs GND
 
-// PGA +-4.096 V (ajustable despuÃ©s)
-#define ADS1115_PGA_4_096V   0x0200
+// PGA opciones (según datasheet ADS1115)
+#define ADS1115_PGA_6_144V   0x0000  // ±6.144V
+#define ADS1115_PGA_4_096V   0x0200  // ±4.096V
+// ... si quieres luego agregamos ±2.048, etc.
 
-// Modo single-shot (cada lectura dispara conversiÃ³n)
+
+#define ADS1115_FSR_VOLTS   6.144f
+
+
+// Modo single-shot (cada lectura dispara conversion)
 #define ADS1115_MODE_SINGLE  0x0100
 
 // Data rate 128 SPS (equilibrio ruido/velocidad)

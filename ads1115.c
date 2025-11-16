@@ -72,11 +72,11 @@ int16 ads1115_read_single_ended(int8 channel)
       case 1: config |= ADS1115_MUX_A1_GND; break;
       case 2: config |= ADS1115_MUX_A2_GND; break;
       case 3: config |= ADS1115_MUX_A3_GND; break;
-      default: return 0; // canal invÃ¡lido
+      default: return 0; // canal invalido
    }
 
-   config |= ADS1115_OS_SINGLE_START;   // Disparar conversiÃ³n
-   config |= ADS1115_PGA_4_096V;        // Rango +-4.096V
+   config |= ADS1115_OS_SINGLE_START;   // Disparar conversion
+   config |= ADS1115_PGA_6_144V;        // Rango +-6.144V (para INA281A1 + 12.4R)
    config |= ADS1115_MODE_SINGLE;       // Single-shot
    config |= ADS1115_DR_128SPS;         // 128SPS
    config |= ADS1115_COMP_DISABLE;      // Sin comparador
@@ -97,9 +97,6 @@ int16 ads1115_read_single_ended(int8 channel)
    // Leer resultado
    return ads1115_read_reg(ADS1115_REG_CONVERSION);
 }
-// Conversión genérica usando el FSR del PGA que estamos usando
-// Aquí asumimos PGA = ±4.096V, si cambias, ajustas FSR_VOLTS
-#define ADS1115_FSR_VOLTS   4.096f   // Full-Scale Range del PGA actual
 
 float ads1115_raw_to_volts(int16 raw)
 {

@@ -1,4 +1,18 @@
 // ina281.h
+//4 mA: 
+//VSHUNT=I?R=0.004?12.4?0.0496 V
+//VOUT=20?0.0496?0.992 V
+//
+//20 mA:
+//VSHUNT=0.02?12.4?0.248 V
+//VOUT=20?0.248?4.96 V
+//
+//INA281A1 te va a sacar entre ~1.0 V y ~4.96 V en el rango 4–20 mA.
+//
+//Con el ADS1115:
+//Si dejamos PGA = ±4.096 V, nos vamos a saturar arriba de ~16.5 mA porque el ADC ya no ve más de 4.096 V.
+//Lo ideal es usar PGA = ±6.144 V para cubrir todo el rango, ya que el ADS1115 lo soporta. 
+
 #ifndef INA281_H
 #define INA281_H
 
